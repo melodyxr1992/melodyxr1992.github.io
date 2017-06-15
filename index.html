@@ -23,8 +23,9 @@
 			function audioAutoPlay(id){
 				var audio = document.getElementById(id);
 				audio.play();
-				document.addEventListener("WeixinJSBridgeReady", function () {
-						audio.play();
+
+				document.addEventListener('touchstart', function () {
+					audio.play();
 				}, false);
 			}
 			audioAutoPlay('HBD');
