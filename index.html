@@ -17,12 +17,34 @@
 
 	</head>
 	<body>
+		<audio id="bgmusic" src="http://www.w3school.com.cn/i/song.mp3"></audio>
+		<!-- 当使用方法1时必须加载 JS-SDK 的 JS 文件, 方法2不需要加载这个 JS -->
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+		<script>
+		   // 方法1: 现在微信官方已经推出了微信JS-SDK, 最好还是不要使用"野生"方式, 因为不知道什么时候就可以不能用了!
+		   // http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+		   // 通过config接口注入权限验证配置后, 在 ready 中 play 一下 audio
+		   function autoPlayAudio1() {
+			  wx.config({
+				 // 配置信息, 即使不正确也能使用 wx.ready
+				 debug: false,
+				 appId: '',
+				 timestamp: 1,
+				 nonceStr: '',
+				 signature: '',
+				 jsApiList: []
+			  });
+			  wx.ready(function() {
+				 document.getElementById('bgmusic').play();
+			  });
+		   }
+		   autoPlayAudio1();
+		</script>
 		<div class="stage">
 			<ul>
-				<audio autoplay="autoplay">
+				<audio controls="controls">
 					<source src="sound/happybirthday.mp3" type="audio/mp3"/>
 				</audio>
-				<script type="text/javascript" src="./index_files/sound.js"></script>
 				<li>
 					<div class="bg" data-url="pic/1.jpg" style="background-image: url(&quot;pic/1.jpg&quot;);"></div>
 				</li>
